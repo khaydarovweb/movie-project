@@ -17,22 +17,32 @@ const QRCodeGenerator: React.FC = () => {
 	};
 
 	return (
-		<div>
-			<Toaster />
-			<h1>QR Code Generator</h1>
-			<input
-				type="text"
-				value={text}
-				onChange={(e) => setText(e.target.value)}
-				placeholder="Enter text to generate QR code"
-			/>
-			<button onClick={generateQR}>Generate QR Code</button>
-			{qrCodeUrl && (
-				<div>
-					<img src={qrCodeUrl} alt="QR Code" />
-				</div>
-			)}
-		</div>
+		<section className="h-screen bg-gray-800">
+			<div className="max-w-xl mx-auto p-4">
+				<Toaster position="bottom-center" reverseOrder={false} />
+				<h1 className="text-3xl font-bold mb-4 text-center text-white">QR Code Generator</h1>
+				<span className="flex gap-5 input-and-btn">
+					<input
+						type="text"
+						value={text}
+						onChange={(e) => setText(e.target.value)}
+						placeholder="Enter text to generate QR Code"
+						className="w-full border-[2px] border-orange-500 rounded py-2 px-4 focus:outline-none"
+					/>
+					<button
+						onClick={generateQR}
+						className="generate-btn bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-4 rounded w-[270px]"
+					>
+						Generate QR Code
+					</button>
+				</span>
+				{qrCodeUrl && (
+					<div className="mt-4 text-center">
+						<img src={qrCodeUrl} alt="QR Code" className="mx-auto" />
+					</div>
+				)}
+			</div>
+		</section>
 	);
 };
 
